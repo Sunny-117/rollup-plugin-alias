@@ -1,10 +1,17 @@
 import { Plugin } from "rollup";
-export function alias(): Plugin {
+import { AliasOptions } from "./typing";
+import { normalizeEntries } from "./utils";
+
+export function alias(options: AliasOptions): Plugin {
+  const entries = normalizeEntries(options.entries);
   return {
     name: "alias",
     resolveId(source: string, importer: string | undefined) {
-      console.log(source, importer, "====");
-      return source;
+      const entry = entries.find((e) => {
+        return e.match(source);
+      });
+      if (!entry) return source;
+      return entry.replace(source);
     },
   };
 }

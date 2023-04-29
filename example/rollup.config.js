@@ -6,5 +6,17 @@ export default defineConfig({
     file: "./dist/index.js",
     format: "es",
   },
-  plugins: [alias()],
+  plugins: [
+    alias({
+      // entries: {
+      //   "@": "./utils",
+      // },
+      entries: [
+        {
+          find: "@",
+          replacement: "./utils",
+        },
+      ],
+    }),
+  ],
 });
