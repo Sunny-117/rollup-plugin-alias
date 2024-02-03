@@ -1,3 +1,3 @@
 # rollup-plugin-alias
 
-pnpm i ../ -D
+🍣 A Rollup plugin for defining aliases when bundling packages.
